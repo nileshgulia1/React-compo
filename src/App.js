@@ -16,12 +16,16 @@ class App extends Component {
       <div className="App">
       {/*<h1>{this.state.myText}</h1>
       <p>{this.state.contentText}</p>*/}
-         <Header />
-           <Content />
+         <Header header={this.state.myText}/>
+           <Content content={this.state.contentText}/>
            <Clock />
       </div>
     );
   }
+}
+App.defaultProps={
+  header:"this is default header",
+  content:"this is default content"
 }
 class Header extends Component{
   render() {
@@ -40,7 +44,8 @@ class Content extends Component{
     return(
       <p className="App-intro">
       <h1 >Hello this is my app</h1>
-        Iam creating components now
+        <p>Iam creating components now</p>
+      {this.props.content}
       </p>
 
 
