@@ -1,5 +1,5 @@
 # React-compo
-Use <code>npm install </code>to install node packages<br>
+Use <code>npm install </code>to install node Dependencies<br>
 Start npm or yarn server using :<br>
 <code>npm start</code><br>
 <code>yarn start</code><br>
