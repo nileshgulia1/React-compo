@@ -40,60 +40,51 @@ class Header extends Component {
 }
 
 class Content extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-
-    this.state = {
-      data: 0
+    this.state={
+      myInputValue: "my Input"
     };
-    this.setNewNumber = this.setNewNumber.bind(this);
+    this.myInputChanged=this.myInputChanged.bind(this);
   }
-  setNewNumber() {
-    this.setState({data: this.state.data + 1})
-  }
+myInputChanged(e){
+
+  var itemValue=e.target.value;
+  this.setState({
+    myInputValue:itemValue
+  });
+}
   render() {
     return (
       <div className="App-intro">
-        <h1>Components Life Cycle!</h1>
-        <p>In this lecture, we will go over the Components Life Cycle methods</p>
-        <button onClick={this.setNewNumber}>Update Number</button>
-        <NumberComponent myNumber={this.state.data}/>
+        <h1>Forms in React!</h1>
+        <p>In this lecture, we will go over the Forms!!</p>
+        <MyInputComponent inputValue={this.state.myInputValue}
+        myInputChanged={this.myInputChanged}/>
+        <h4>{this.state.myInputValue}</h4>
+
+
       </div>
     );
   }
 }
+class MyInputComponent extends Component{
+  render(){
+    return(
+      <div>
+      <input  placeholder={this.props.inputValue} onChange={this.props.myInputChanged}></input>
 
-class NumberComponent extends Component {
-  componentWillMount(){
-    console.log('Called the COMPONENT WILL MOUNT');
-  }
-  componentDidMount(){
-    console.log('Called the COMPONENT DID MOUNT');
-  }
-  componentWillReceiveProps(newProps){
-    console.log('Called the COMPONENT WILL RECEIVE PROPS');
-  }
-  shouldComponentUpdate(newProps, nextState) {
-   console.log('Called the SHOULD COMPONENT UPDATE');
-   return true;
-  }
-  componentWillUpdate(newProps, nextState) {
-    console.log('Called the COMPONENT WILL UPDATE');
-  }
-  componentDidUpdate(newProps, nextState) {
-    console.log('Called the COMPONENT DID UPDATE');
-  }
-  componentWillUnmount() {
-    console.log('Called the COMPONENT WILL UNMOUNT');
-  }
-  render() {
-    return (
-      <h4>
-        {this.props.myNumber}
-      </h4>
+
+      </div>
+
+
+
+
+
     );
   }
-}setTimeout(() => {
-	ReactDOM.unmountComponentAtNode(document.getElementById('root'));
-}, 10000)
+}
+
+
+
 export default App;
