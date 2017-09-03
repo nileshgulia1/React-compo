@@ -23,6 +23,8 @@ class App extends Component {
         }
         <Header />
         <Content />
+      <EsaayComponent />
+        <FormFlavor />
       </div>
     );
   }
@@ -84,6 +86,78 @@ class MyInputComponent extends Component{
     );
   }
 }
+class EsaayComponent extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      value: 'Once upon a time'
+    };
+    this.handleChange=this.handleChange.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+  }
+  handleChange(e){
+    this.setState({value: e.target.value});
+  }
+  handleSubmit(e){
+    alert(this.state.value);
+    e.preventDefault();
+  }
+  render(){
+    return(
+      <form onSubmit={this.handleSubmit}>
+      <textarea placeholder={this.state.value} onChange={this.handleChange} />
+      <h4>{this.state.value}</h4>
+      <button type="submit">Submit</button>
+
+      </form>
+
+    );
+  }
+}
+class FormFlavor extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      value: 'myfruit'
+    };
+    this.handleChange=this.handleChange.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+  }
+  handleChange(e){
+    this.setState({value: e.target.value});{/*for updation of value(state)*/}
+  }
+  handleSubmit(e){
+    alert("The Flavour you selected is " + this.state.value.toUpperCase());
+    e.preventDefault();
+  }
+  render(){
+    return(
+      <form onSubmit={this.handleSubmit}>
+      <label>
+      Pick your favourite fruit:
+      <select onChange={this.handleChange}>
+      <option value="select">Select</option>
+      <option value="grapefruit">grapes</option>
+        <option value="banaanafruit">bannana</option>
+          <option value="applefruit">apple</option>
+            <option value="chikufruit">chiku</option>
+            </select>
+
+
+
+
+
+      </label>
+      <button type="submit">Submit</button>
+
+      </form>
+
+    );
+  }
+}
+
+
+
 
 
 
