@@ -155,7 +155,67 @@ class FormFlavor extends Component{
     );
   }
 }
+class Reservation extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      isGoing: true,
+      numberOfGuests: 2
+    };
+    this.handleInputChange=this.handleInputChange.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+    
+  }
+  handleInputChange(e){
+let target=e.target;
+let value=target.type==='checkbox' ? target.checked : target.value;
+let name=target.name;
+console.log(name,value);
+this.setState({
+  [name]: value
 
+});
+  }
+  handleSubmit(e){
+    alert('i will be going '+ this.state.isGoing + " ,I will bring " +this.state.numberOfGuests + "guests");
+e.preventDefault();
+
+  }
+  
+  render(){
+    return(
+      <form onSubmit={this.handleSubmit}>
+      <label>
+      Are you going for the party?
+      <input type="checkbox"
+      name="isGoing"
+      checked={this.state.isGoing}
+       onChange={this.handleInputChange} />
+      </label>
+      <br/>
+      <label>
+      How many Going?
+      <input type="number"
+      name="numberOfGuests"
+      checked={this.state.numberOfGuests}
+       onChange={this.handleInputChange} />
+      </label>
+      <input type="submit" value="Submit"/ >
+      
+      
+      
+      
+      </form>
+
+
+
+    );
+
+
+
+
+  }
+}
 
 
 
